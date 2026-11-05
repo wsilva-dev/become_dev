@@ -8,6 +8,7 @@
 
     <body>
         <h1>Mural de Recados</h1>
+        <h4 style="color: chocolate;">Total de recados no mural: {{ total_messages }}</h4>
         {% for message in messages %}
             <article>
                 <h2>{{ message.author }}</h2>
