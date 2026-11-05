@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width" inicial-scale="1.0">
+        <title>Mural de Recados</title>
+    </head>
+
+    <body>
+        <h1>Mural de Recados</h1>
+        {% for message in messages %}
+            <article>
+                <h2>{{ message.author }}</h2>
+                <p>{{ message.content }}</p>
+                <small>{{ message.created_at|date:"d/m/Y H:i"}}</small>   
+            </article>
+        
+        {% empty %}
+            <p>Ainda não há recados no mural</p>
+        
+        {% endfor %}      
+
+    </body>
+</html>
