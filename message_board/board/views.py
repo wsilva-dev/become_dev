@@ -14,3 +14,6 @@ def message_list(request):
             "total_messages" : total_messages,
          },
     )
+
+def about(request):
+    return render(request, "board/about.html")
