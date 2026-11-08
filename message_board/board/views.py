@@ -17,3 +17,16 @@ def message_list(request):
 
 def about(request):
     return render(request, "board/about.html")
+
+def message_create(request):
+    if request.method == "POST":
+        author = request.POST.get("author", "").strip()
+        content = request.POST.get("content", "").strip()
+
+        return render(
+            request, "board/novo_recado.html", {
+                "author" : author,
+                "content" : content,
+            })
+    
+    return render(request, "board/novo_recado.html")
