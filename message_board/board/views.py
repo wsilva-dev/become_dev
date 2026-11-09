@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from .models import Message
@@ -23,8 +23,16 @@ def message_create(request):
         author = request.POST.get("author", "").strip()
         content = request.POST.get("content", "").strip()
 
+        if author and content and len(author) <=100:
+            Message.objects.create( # create the register in the date base
+                author=author,
+                content=content,
+            )
+            return redirect('message_list') 
+
         return render(
             request, "board/novo_recado.html", {
+                "error" : "Preencha os dois campos. O autor deve ter até 100 caracteres.",
                 "author" : author,
                 "content" : content,
             })

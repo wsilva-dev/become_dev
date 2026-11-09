@@ -1,43 +1,28 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novo Recado</title>
-</head>
-<body>
-
-    <h1>Insira aqui o seu recado:</h1>
-    <div class="add-message-form">
-        <form action="{% url 'message_create' %}" method="post">
-            {% csrf_token %}
-            <div>
-                <label for="author">Autor:</label>
-                <input type="text" id="author" name="author" maxlength="100" required>
-            </div>
-
-            <div>
-                <label for="message">Mensagem:</label>
-                <textarea id="message" name="content" required></textarea>
-            </div>
-
-            <div class="button">
-                <button type="submit">Enviar</button>
-            </div>
-        </form>
-    </div>
-    
-    <div class="confirm-submission">
-        
-        {% if author or content %}
-            <h3>Dados recebidos</h3>
-            <p>Author: {{ author }}</p>
-            <p>Mensagem:</p>
-            <p>{{ content }}</p>
+{% extends "board/base.html" %}
+{% block title %}Novo recado | Mural{% endblock %}
+{% block content %}
+<main class="form-page">
+    <h1 class="visually-hidden">Adicionar recado</h1>
+    <form class="surface message-form" action="{% url 'message_create' %}" method="post">
+        {% csrf_token %}
+        {% if error %}
+            <p class="form-alert" role="alert">{{ error }}</p>
         {% endif %}
-        
-    </div>
-
-    <a href="{% url 'message_list' %}">Voltar</a>
-</body>
-</html>
+        <div class="form-field">
+            <label class="form-label" for="author">Autor</label>
+            <input class="form-control" type="text" id="author" name="author"
+                   maxlength="100" required value="{{ author }}" placeholder="Seu nome"
+                   autocomplete="name">
+        </div>
+        <div class="form-field">
+            <label class="form-label" for="message">Recado</label>
+            <textarea class="form-control form-control--message" id="message" name="content"
+                      required placeholder="Seu recado">{{ content }}</textarea>
+        </div>
+        <div class="form-actions">
+            <button class="button" type="submit">Enviar</button>
+        </div>
+    </form>
+    <a class="button button--small form-back" href="{% url 'message_list' %}">Voltar ao mural</a>
+</main>
+{% endblock %}

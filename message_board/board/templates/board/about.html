@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <title>Sobre o Mural</title>
-    </head>
-
-    <body>
-        <h1>Sobre o Mural</h1>
-        <p>Este mural foi criado para compartilhamento de recados. Use sem moderação! :)</p>
-        <a href="{% url 'message_list' %}">voltar</a>
-    </body>
-</html>
+{% extends "board/base.html" %}
+{% block title %}Sobre o Mural{% endblock %}
+{% block content %}
+<main class="page-shell">
+    <article class="surface message-card" aria-labelledby="about-title">
+        <header>
+            <p class="eyebrow">Um espaço para compartilhar</p>
+            <h1 class="page-title" id="about-title">Sobre o Mural</h1>
+        </header>
+        <p class="message-content">Este mural foi criado para compartilhamento de recados. Use sem moderação! :)</p>
+        <nav class="page-nav" aria-label="Navegação da página Sobre">
+            <a class="button button--small" href="{% url 'message_list' %}">Voltar ao mural</a>
+        </nav>
+    </article>
+</main>
+{% endblock %}
