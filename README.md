@@ -42,8 +42,8 @@ git --version
 Em uma pasta onde deseja guardar o projeto:
 
 ```powershell
-git clone https://github.com/wsilva-dev/become_dev.git
-cd become_dev
+git clone https://github.com/wsilva-dev/first_steps.git
+cd first_steps
 cd message_board
 ```
 
@@ -180,7 +180,7 @@ Não é preciso recriar o projeto, reinstalar os pacotes ou refazer o `.env` a c
 sessão. Entre na pasta do projeto, ative o ambiente e inicie o servidor:
 
 ```powershell
-cd C:\Users\wjrad\Documents\become_dev\message_board
+cd C:\Users\wjrad\Documents\first_steps\message_board
 .\.venv\Scripts\Activate.ps1
 python manage.py runserver
 ```
